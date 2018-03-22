@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".SearchActivity">
         </activity>
+        <activity android:name=".ResultActivity">
+        </activity>
         <!--Add more activities here when created -->
     </application>
 

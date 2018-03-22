@@ -49,6 +49,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="146dp"
         android:padding="6dp"
-        android:text="SEARCH" />
+        android:text="Don't know where to start?" />
 
 </RelativeLayout>

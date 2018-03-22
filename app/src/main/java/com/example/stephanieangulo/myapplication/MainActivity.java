@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent detailIntent = new Intent(mContext, SearchActivity.class);
-                // put title and instruction URL
 
                 startActivity(detailIntent);
             }

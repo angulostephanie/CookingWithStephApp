@@ -3,14 +3,61 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
+
+    <Spinner
+        android:id="@+id/dietSpinner"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/servingSpinner"
+        android:layout_below="@+id/servingSpinner"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/servingSpinner"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/prepSpinner"
+        android:layout_centerVertical="true"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/prepSpinner"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/textView3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="18dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="179dp"
-        android:max="20"
-        android:progress="5" />
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignTop="@+id/prepSpinner"
+        android:layout_marginTop="14dp"
+        android:text="Preparation Time" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_centerVertical="true"
+        android:text="Serving Restriction" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/dietSpinner"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="15dp"
+        android:text="Diet Restriction" />
 </RelativeLayout>
