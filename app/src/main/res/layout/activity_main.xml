@@ -16,31 +16,6 @@
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/food" />
 
-    <EditText
-        android:id="@+id/searchBarEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-
-        android:alpha=".8"
-        android:background="@color/lightGray"
-        android:ems="10"
-        android:hint="Search"
-        android:inputType="textPersonName"
-        android:padding="6dp"
-        app:srcCompat="@drawable/food" />
-
-    <Button
-        android:id="@+id/goBtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignBaseline="@+id/searchBarEditText"
-        android:layout_alignBottom="@+id/searchBarEditText"
-        android:layout_toEndOf="@+id/searchBarEditText"
-        android:text="GO" />
-
     <Button
         android:id="@+id/searchPageBtn"
         android:layout_width="wrap_content"
@@ -49,6 +24,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="146dp"
         android:padding="6dp"
-        android:text="Don't know where to start?" />
+        android:text="SEARCH" />
 
 </RelativeLayout>

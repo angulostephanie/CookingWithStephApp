@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <!--<ImageView-->
+        <!--android:id="@+id/recipe_item_image"-->
+        <!--android:layout_width="90dp"-->
+        <!--android:layout_height="140dp"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginBottom="6dp"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="6dp"-->
+        <!--android:contentDescription="Recipe's image"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--app:srcCompat="@android:color/holo_red_dark" />-->
+
+    <!--<RelativeLayout-->
+        <!--android:id = "@+id/recipe_list_text_layout"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_toEndOf="@+id/recipe_item_image">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/recipe_item_title"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_marginTop="3dp"-->
+            <!--android:textSize="20sp"-->
+            <!--android:text="Recipe's title" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/recipe_item_description"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/recipe_item_title"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_marginTop="3dp"-->
+            <!--android:maxLines="3"-->
+            <!--android:textSize="9sp"-->
+            <!--android:text="Recipe's description" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/recipe_item_characters"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/recipe_item_description"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_marginTop="3dp"-->
+            <!--android:maxLines="3"-->
+            <!--android:textSize="13sp"-->
+            <!--android:text="Placeholder text" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/recipe_item_question"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/recipe_item_characters"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_marginTop="3dp"-->
+            <!--android:maxLines="3"-->
+            <!--android:textSize="11sp"-->
+            <!--android:text="Placeholder text" />-->
+
+    <!--</RelativeLayout>-->
+    <ImageView
+        android:id="@+id/recipe_item_image"
+        android:layout_width="90dp"
+        android:layout_height="140dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="6dp"
+        android:contentDescription="Recipe's image"
+        android:scaleType="fitCenter"
+        app:srcCompat="@android:drawable/alert_dark_frame" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/recipe_item_image">
+
+        <TextView
+            android:id="@+id/recipe_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:textSize="20sp"
+            android:text="Recipe's title" />
+        <TextView
+            android:id="@+id/recipe_item_servings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recipe_item_title"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:maxLines="3"
+            android:textSize="9sp"
+            android:text="Servings" />
+
+        <TextView
+            android:id="@+id/recipe_item_prep_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recipe_item_servings"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:maxLines="3"
+            android:textSize="13sp"
+            android:text="Prep time" />
+
+        <TextView
+            android:id="@+id/recipe_item_diet_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/recipe_item_prep_time"
+            android:layout_alignEnd="@+id/recipe_item_title"
+            android:layout_marginEnd="1dp"
+            android:maxLines="3"
+            android:text="Diet label"
+            android:textSize="13sp" />
+        <ImageButton
+            android:id="@+id/recipe_item_cook_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="25dp"
+            app:srcCompat="@android:drawable/sym_def_app_icon" />
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

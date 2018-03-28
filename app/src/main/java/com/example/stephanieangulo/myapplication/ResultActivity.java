@@ -16,14 +16,17 @@ import java.util.ArrayList;
 public class ResultActivity extends AppCompatActivity {
     ListView mListView;
     Context mContext;
-
+    //Map<String, Integer> servings = Map.of("Less than 4", 4);//new HashMap<>();
+//    Map<String, >
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         mContext = this;
-        final ArrayList<Recipe> recipes =  Recipe.getRecipesFromJSON("recipes.json", this);
-        RecipeAdapter adapter = new RecipeAdapter(this, recipes);
+        final ArrayList<Recipe> recipes =  Recipe.getRecipesFromJSON("recipes.json", mContext);
+
+        RecipeAdapter adapter = new RecipeAdapter(mContext, filterResults(recipes, new ArrayList<String>()));
+
         mListView = findViewById(R.id.resultListView);
         mListView.setAdapter(adapter);
 
@@ -33,6 +36,19 @@ public class ResultActivity extends AppCompatActivity {
                 System.out.println(position);
             }
         });
+    }
+    private ArrayList<Recipe> filterResults(ArrayList<Recipe> recipes, ArrayList<String> parameters) {
+        if(parameters.isEmpty())
+            return recipes;
+
+        for(int i = 0; i < parameters.size(); i++) {
+
+        }
+        return null;
+    }
+
+    private void orderResults(ArrayList<Recipe> results) {
+
     }
 
 }
