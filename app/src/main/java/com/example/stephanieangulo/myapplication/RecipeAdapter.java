@@ -28,10 +28,7 @@ public class RecipeAdapter extends BaseAdapter{
     private ArrayList<Recipe> mRecipeList;
     private LayoutInflater mInflater;
 
-
-    // constructor
     public RecipeAdapter(Context mContext, ArrayList<Recipe> mRecipeList) {
-        // initialize instance variables
         this.mContext = mContext;
         this.mRecipeList = mRecipeList;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -106,8 +103,6 @@ public class RecipeAdapter extends BaseAdapter{
         cookBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Just clicked " + recipe.title + "'s button");
-
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext, "channel_ID")
                         .setSmallIcon(R.drawable.chefpic)
                         .setContentTitle("Cooking Instructions")
@@ -116,13 +111,12 @@ public class RecipeAdapter extends BaseAdapter{
 
                 NotificationCompat.BigTextStyle notificationText = new NotificationCompat.BigTextStyle();
                 notificationText.bigText("The instructions for " + recipe.title + " can be found here! ;)");
-                //notificationText.setBigContentTitle("Cooking Instructions");
                 builder.setStyle(notificationText);
                 builder.setPriority(NotificationCompat.PRIORITY_MAX);
                 builder.setContentIntent(pendingIntent);
 
-                NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(mContext);
-                mNotificationManager.notify((int)System.currentTimeMillis(), builder.build());
+                NotificationManagerCompat manager = NotificationManagerCompat.from(mContext);
+                manager.notify((int)System.currentTimeMillis(), builder.build());
             }
         });
         return view;
