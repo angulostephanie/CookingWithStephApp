@@ -1,14 +1,21 @@
 package com.example.stephanieangulo.myapplication;
 
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -20,6 +27,7 @@ public class RecipeAdapter extends BaseAdapter{
     private Context mContext;
     private ArrayList<Recipe> mRecipeList;
     private LayoutInflater mInflater;
+
 
     // constructor
     public RecipeAdapter(Context mContext, ArrayList<Recipe> mRecipeList) {
@@ -71,25 +79,52 @@ public class RecipeAdapter extends BaseAdapter{
 
             holder = (ViewHolder) view.getTag();
         }
-            TextView titleTextView = holder.titleTextView;
-            TextView servingTextView = holder.servingTextView;
-            TextView prepTimeTextView = holder.prepTimeTextView;
-            TextView dietLabelTextView = holder.dietLabelTextView;
-            ImageView thumbnailImageView = holder.thumbnailImageView;
-            Button cookBtn = holder.cookBtn;
+        TextView titleTextView = holder.titleTextView;
+        TextView servingTextView = holder.servingTextView;
+        TextView prepTimeTextView = holder.prepTimeTextView;
+        TextView dietLabelTextView = holder.dietLabelTextView;
+        ImageView thumbnailImageView = holder.thumbnailImageView;
+        ImageButton cookBtn = holder.cookBtn;
 
-            Recipe recipe = (Recipe) getItem(i);
-            titleTextView.setText(recipe.title);
-            String servings = recipe.servings + " servings";
-            servingTextView.setText(servings);
-            prepTimeTextView.setText(recipe.prepTime);
-            prepTimeTextView.setTextColor(ContextCompat.getColor(mContext, R.color.colorAccent));
-            dietLabelTextView.setText(recipe.dietLabel);
-            dietLabelTextView.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
+        final Recipe recipe = (Recipe) getItem(i);
+        titleTextView.setText(recipe.title);
+        String servings = recipe.servings + " servings";
+        servingTextView.setText(servings);
+        prepTimeTextView.setText(recipe.prepTime);
+        prepTimeTextView.setTextColor(ContextCompat.getColor(mContext, R.color.colorAccent));
+        dietLabelTextView.setText(recipe.dietLabel);
+        dietLabelTextView.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
 
-            //Picasso.with(mContext).load(recipe.imageURL).into(thumbnailImageView);
+        Picasso.with(mContext).load(recipe.imageURL).into(thumbnailImageView);
 
+        Uri mUri = Uri.parse(recipe.webURL);
+        Intent notificationIntent = new Intent(Intent.ACTION_VIEW, mUri);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
+        final PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, notificationIntent, 0);
+
+        cookBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Just clicked " + recipe.title + "'s button");
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext, "channel_ID")
+                        .setSmallIcon(R.drawable.chefpic)
+                        .setContentTitle("Cooking Instructions")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setAutoCancel(true);
+
+                NotificationCompat.BigTextStyle notificationText = new NotificationCompat.BigTextStyle();
+                notificationText.bigText("The instructions for " + recipe.title + " can be found here! ;)");
+                //notificationText.setBigContentTitle("Cooking Instructions");
+                builder.setStyle(notificationText);
+                builder.setPriority(NotificationCompat.PRIORITY_MAX);
+                builder.setContentIntent(pendingIntent);
+
+                NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(mContext);
+                mNotificationManager.notify((int)System.currentTimeMillis(), builder.build());
+            }
+        });
         return view;
     }
     private static class ViewHolder {
@@ -98,7 +133,7 @@ public class RecipeAdapter extends BaseAdapter{
         public TextView prepTimeTextView;
         public TextView dietLabelTextView;
         public ImageView thumbnailImageView;
-        public Button cookBtn;
+        public ImageButton cookBtn;
 
     }
 }

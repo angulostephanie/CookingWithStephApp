@@ -1,4 +1,14 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Cooking With Steph</string>
+    <string name="preparation_time">Preparation Time</string>
+    <string name="serving_restriction">Serving Restriction</string>
+    <string name="diet_restriction">Diet Restriction</string>
     <string name="search">Search</string>
+    <string name="recipe_image">Recipe\'s image</string>
+    <string name="recipe_title">Recipe\'s title</string>
+    <string name="servings">Servings</string>
+    <string name="prep_time">Prep time</string>
+    <string name="todo">TODO</string>
+    <string name="diet_label">Diet label</string>
+    <string name="num_recipes_found"># of recipes found</string>
 </resources>
