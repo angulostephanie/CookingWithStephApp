@@ -57,16 +57,6 @@ public class Recipe {
         return list;
     }
 
-    public void printAllPrepTimes(Context context) {
-        Set<String> prepTimes = new HashSet<>();
-        ArrayList<Recipe> recipes = getRecipesFromJSON("recipes.json", context);
-        for(int i = 0; i< recipes.size(); i++) {
-            if(!prepTimes.contains(recipes.get(i).prepTime)) {
-                prepTimes.add(recipes.get(i).prepTime);
-                System.out.println("UNIQUE @" + i + ", " +recipes.get(i).prepTime);
-            }
-        }
-    }
     private int convertPrepTime(String prepTime) {
         ArrayList<String> words = new ArrayList<>(Arrays.asList(prepTime.split(" ")));
         if(words.contains("and"))
@@ -88,6 +78,7 @@ public class Recipe {
         }
         return time;
     }
+
     private static String loadJsonFromAsset(String filename, Context context) {
         String json = null;
         try {

@@ -16,11 +16,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mContext = this;
         searchBtn = findViewById(R.id.searchPageBtn);
+        
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent detailIntent = new Intent(mContext, SearchActivity.class);
-
                 startActivity(detailIntent);
             }
         });

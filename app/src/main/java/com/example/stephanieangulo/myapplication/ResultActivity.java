@@ -26,16 +26,15 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         mContext = this;
+
         ArrayList<Recipe> recipes =  Recipe.getRecipesFromJSON("recipes.json", mContext);
-        System.out.println("Size of unfiltered recipe database ~ " + recipes.size());
+
         String dietLabel = this.getIntent().getExtras().getString("dietLabel");
         String servings = this.getIntent().getExtras().getString("servings");
         String prepTime = this.getIntent().getExtras().getString("prepTime");
 
-        System.out.println("DietLabel ~ " + dietLabel + ", Servings ~ " + servings + ", prep time ~ " + prepTime);
         makeServingsMap(recipes, servings);
         makePrepTimeMap(recipes, prepTime);
-
 
         ArrayList<Recipe> results = filterResults(recipes, dietLabel, servings, prepTime);
         RecipeAdapter adapter = new RecipeAdapter(mContext, results);
@@ -55,37 +54,38 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private ArrayList<Recipe> filterResults(ArrayList<Recipe> recipes, String dietLabel, String servings, String prepTime) {
-        if(dietLabel.equals(" ") && servings.equals(" ") && prepTime.equals(" "))
+        if(isAllUnSpecified(dietLabel, servings, prepTime))
             return recipes;
 
         ArrayList<Recipe> filteredRecipes = new ArrayList<>();
         for(int i = 0; i < recipes.size(); i++) {
             Recipe recipe = recipes.get(i);
-            if((dietLabel.equals(recipe.dietLabel) || dietLabel.equals(" "))
-                    && servingsMap.containsKey(servings) && prepTimeMap.containsKey(prepTime)) {
-                ArrayList<Integer> list = servingsMap.get(servings);
-                ArrayList<Integer> list_2 = prepTimeMap.get(prepTime);
+            if(isSpecifiedDietLabel(dietLabel, recipe) && servingsMap.containsKey(servings)
+                    && prepTimeMap.containsKey(prepTime)) {
+                ArrayList<Integer> servingValues = servingsMap.get(servings);
+                ArrayList<Integer> prepTimeValues = prepTimeMap.get(prepTime);
                 boolean yeet = false;
-                for(int j = 0; j < list.size(); j++) {
-                    for(int k = 0; k < list_2.size(); k++) {
-                        if(recipe.servings == list.get(j)
-                                && recipe.prepTimeConverted == list_2.get(k))
+                for(int j = 0; j < servingValues.size(); j++) {
+                    for(int k = 0; k < prepTimeValues.size(); k++) {
+                        int servingValue = servingValues.get(j);
+                        int prepTimeValue = prepTimeValues.get(k);
+                        if(recipe.servings == servingValue
+                                && recipe.prepTimeConverted == prepTimeValue)
                             yeet = true;
                     }
                 }
-                if(yeet) {
-                    filteredRecipes.add(recipe);
-                    System.out.println(recipe.title);
-                    System.out.println(recipe.dietLabel);
-                    System.out.println(recipe.servings);
-                    System.out.println(recipe.prepTime);
-                    System.out.println(recipe.prepTimeConverted);
-                }
-
+                if(yeet) filteredRecipes.add(recipe);
             }
         }
-
         return filteredRecipes;
+    }
+
+    private boolean isSpecifiedDietLabel(String dietLabel, Recipe recipe) {
+        return dietLabel.equals(recipe.dietLabel) || dietLabel.equals(" ");
+    }
+
+    private boolean isAllUnSpecified(String dietLabel, String servings, String prepTime) {
+        return dietLabel.equals(" ") && servings.equals(" ") && prepTime.equals(" ");
     }
 
     private void makeServingsMap(ArrayList<Recipe> recipes, String parameter) {
@@ -141,7 +141,6 @@ public class ResultActivity extends AppCompatActivity {
                     prepTimeMap.put(parameter, list);
                 }
             }
-
         }
     }
 }

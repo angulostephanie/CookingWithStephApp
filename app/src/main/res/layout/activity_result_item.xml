@@ -71,15 +71,13 @@
         <ImageButton
             android:id="@+id/recipe_item_cook_btn"
             android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/recipe_item_title"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/chefpic"
-            android:contentDescription="@string/todo" />
+            android:contentDescription="@string/want_to_cook" />
     </RelativeLayout>
 </RelativeLayout>

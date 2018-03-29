@@ -34,7 +34,6 @@ public class SearchActivity extends AppCompatActivity {
         mContext = this;
         Recipe recipe = new Recipe();
 
-        recipe.printAllPrepTimes(mContext);
         dietSpinner = findViewById(R.id.dietSpinner);
         servingSpinner = findViewById(R.id.servingSpinner);
         prepSpinner = findViewById(R.id.prepSpinner);

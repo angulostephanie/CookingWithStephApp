@@ -8,7 +8,7 @@
     <string name="recipe_title">Recipe\'s title</string>
     <string name="servings">Servings</string>
     <string name="prep_time">Prep time</string>
-    <string name="todo">TODO</string>
+    <string name="want_to_cook">Displays a notification with recipe url</string>
     <string name="diet_label">Diet label</string>
     <string name="num_recipes_found"># of recipes found</string>
 </resources>
